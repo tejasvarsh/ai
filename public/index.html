@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURA AI — Your Intelligent Assistant</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-top">
+    <div class="logo">
+      <span class="logo-icon">✨</span>
+      <div>
+        <div class="logo-name">AURA</div>
+        <div class="logo-sub">AI Assistant</div>
+      </div>
+    </div>
+    <button class="new-chat-btn" id="newChatBtn">
+      <span>+</span> New Chat
+    </button>
+  </div>
+
+  <!-- AI Personalities -->
+  <div class="sidebar-section">
+    <div class="sidebar-label">AI PERSONALITY</div>
+    <div class="personalities" id="personalitiesList"></div>
+  </div>
+
+  <!-- AI Provider -->
+  <div class="sidebar-section">
+    <div class="sidebar-label">AI PROVIDER</div>
+    <div class="providers" id="providersList">
+      <button class="provider-btn active" data-p="gemini">
+        <span>🌟</span> Gemini <span class="free-tag">FREE</span>
+      </button>
+      <button class="provider-btn" data-p="groq">
+        <span>⚡</span> Groq <span class="free-tag">FREE</span>
+      </button>
+      <button class="provider-btn" data-p="claude">
+        <span>🧠</span> Claude <span class="paid-tag">PAID</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Conversations -->
+  <div class="sidebar-section flex-1">
+    <div class="sidebar-label">CONVERSATIONS</div>
+    <div class="conv-list" id="convList">
+      <div class="conv-empty">No conversations yet</div>
+    </div>
+  </div>
+
+  <!-- Status -->
+  <div class="sidebar-bottom">
+    <div class="status-pill" id="statusPill">
+      <span class="status-dot"></span>
+      <span id="statusText">Connecting...</span>
+    </div>
+    <div class="mode-badge" id="modeBadge">DEMO MODE</div>
+  </div>
+</div>
+
+<!-- Main Chat Area -->
+<div class="main">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <div class="topbar-center">
+      <div class="active-personality" id="activePersonality">
+        <span id="apAvatar">🤖</span>
+        <div>
+          <div id="apName">AURA</div>
+          <div id="apSub">AI Assistant</div>
+        </div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="provider-display" id="providerDisplay">Gemini</div>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="messages" id="messages">
+    <!-- Welcome screen -->
+    <div class="welcome" id="welcome">
+      <div class="welcome-icon">✨</div>
+      <h1 class="welcome-title">Hello, I'm <span id="welcomeName">AURA</span></h1>
+      <p class="welcome-sub">Your intelligent AI assistant — powered by free AI forever</p>
+      <div class="suggestions" id="suggestions">
+        <button class="suggestion-btn" data-msg="What can you help me with?">What can you help me with?</button>
+        <button class="suggestion-btn" data-msg="Write a Python function to sort a list">Write me some code</button>
+        <button class="suggestion-btn" data-msg="Explain quantum computing simply">Explain something complex</button>
+        <button class="suggestion-btn" data-msg="Write a short creative story about AI">Write a creative story</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input Area -->
+  <div class="input-area">
+    <div class="input-box">
+      <textarea
+        id="msgInput"
+        placeholder="Message AURA..."
+        rows="1"
+        maxlength="4000"
+      ></textarea>
+      <div class="input-actions">
+        <span class="char-count" id="charCount">0/4000</span>
+        <button class="send-btn" id="sendBtn" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="input-footer">
+      <span>Press <kbd>Enter</kbd> to send · <kbd>Shift+Enter</kbd> for new line</span>
+      <span id="aiLabel">Powered by Gemini (Free)</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Mobile sidebar overlay -->
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
